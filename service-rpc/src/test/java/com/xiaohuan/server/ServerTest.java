@@ -2,8 +2,7 @@ package com.xiaohuan.server;
 
 import com.xiaohuan.rpc.weather_service.WeatherService;
 import com.xiaohuan.server.constants.WeatherConstants;
-import com.xiaohuan.server.controllers.ServiceImpl;
-import org.apache.thrift.protocol.TCompactProtocol;
+import com.xiaohuan.server.controllers.WeatherServiceImpl;
 import org.apache.thrift.protocol.TJSONProtocol;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.server.TSimpleServer;
@@ -24,7 +23,7 @@ public class ServerTest {
         //TBinaryProtocol.Factory proFactory = new TBinaryProtocol.Factory();
         TJSONProtocol.Factory proFactory = new TJSONProtocol.Factory();
 
-        ServiceImpl handler = new ServiceImpl();
+        WeatherServiceImpl handler = new WeatherServiceImpl();
         WeatherService.Processor processor= new WeatherService.Processor(handler);
         TServerTransport serverTransport = new TServerSocket(WeatherConstants.WeahterPort);
 
@@ -41,7 +40,7 @@ public class ServerTest {
 
 
     public void method_2() throws TTransportException {
-        ServiceImpl handler = new ServiceImpl();
+        WeatherServiceImpl handler = new WeatherServiceImpl();
         WeatherService.Processor<WeatherService.Iface> tprocessor= new WeatherService.Processor<WeatherService.Iface>(handler);
         //简单的单线程服务模型，一般用于测试
         TServerSocket serverTransport = new TServerSocket(WeatherConstants.WeahterPort);

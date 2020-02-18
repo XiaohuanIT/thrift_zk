@@ -2,7 +2,7 @@ package com.xiaohuan.server;
 
 import com.xiaohuan.rpc.weather_service.WeatherService;
 import com.xiaohuan.server.constants.WeatherConstants;
-import com.xiaohuan.server.controllers.ServiceImpl;
+import com.xiaohuan.server.controllers.WeatherServiceImpl;
 import org.apache.thrift.protocol.TJSONProtocol;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.server.TThreadPoolServer;
@@ -21,7 +21,7 @@ public class StartService implements Runnable{
         //TBinaryProtocol.Factory proFactory = new TBinaryProtocol.Factory();
         TJSONProtocol.Factory proFactory = new TJSONProtocol.Factory();
 
-        ServiceImpl handler = new ServiceImpl();
+        WeatherServiceImpl handler = new WeatherServiceImpl();
         WeatherService.Processor processor= new WeatherService.Processor(handler);
         TServerTransport serverTransport = new TServerSocket(WeatherConstants.WeahterPort);
 

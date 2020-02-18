@@ -11,9 +11,10 @@ import java.util.List;
 /**
  * Created by xiaohuan on 2019-04-28 23:03.
  */
-public class ServiceImpl implements WeatherService.Iface {
+public class WeatherServiceImpl implements WeatherService.Iface {
     @Override
     public GetCityWeatherResponse get_city_weather(GetCityWeatherRequest request) {
+        System.out.println(request.toString());
         String city = request.getCity();
         GetCityWeatherResponse response = new GetCityWeatherResponse();
         response.setSuccess(true);
